@@ -1,36 +1,48 @@
-﻿using System;
+﻿//return input.Skip(1).SkipWhile(x => !char.IsDigit(x)).ToString();
 using System.Linq;
-//return input.Skip(1).SkipWhile(x => !char.IsDigit(x)).ToString();
+
 namespace EstimatedTime.Domain
 {
     public class EstimatedDuration
     {
         const string _ONEHOURSONEMINUTES = "1 hours and 1 minutes";
 
-
         public string GetEstimatedTime(string input)
         {
-            if(input.StartsWith("0"))
+            var splittedInput = input.Split(" and ");
+
+            var hours = splittedInput[0];
+
+            var minutes = splittedInput[1];
+
+            if(hours.StartsWith("0"))
             {
-                return input.Replace("0 hours and ", "");
-            }
-            if(input.Contains("0"))
-            {
-                if (input.Contains("0 minutes"))
-                {
-                    return "2 hours";
-                }
+                return minutes;
             }
 
-            if (input == _ONEHOURSONEMINUTES)
+            if (minutes.StartsWith("0"))
             {
-                return "1 hour and 1 minute";
+                return hours;
             }
 
+            var formattedHours = GetFormattedTime(hours);
+            var formattedMinutes = GetFormattedTime(minutes);
             
-            return input;
+            return $"{formattedHours} and {formattedMinutes}";
         }
 
-        
+        private string GetFormattedTime(string input)
+        {
+            int.TryParse( input.Split(" ").First(), out var number);
+
+            if (number==1)
+            {
+                return input.SkipLast(1).ToString();
+                
+            }
+
+            return input;
+
+        }
     }
 }

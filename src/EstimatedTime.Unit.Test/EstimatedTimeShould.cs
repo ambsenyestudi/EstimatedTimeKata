@@ -32,5 +32,14 @@ namespace EstimatedTime.Unit.Test
             var estimatedTime = new EstimatedDuration();
             Assert.Equal(expected, estimatedTime.GetEstimatedTime(input));
         }
+
+        [Fact]
+        public void ShowingTheProperHoursWhenMinutesAreTen()
+        {
+            var expected = "3 hours and 10 minutes";
+            var input = "3 hours and 10 minutes";
+            var estimatedTime = new EstimatedDuration();
+            Assert.Equal(expected, estimatedTime.GetEstimatedTime(input));
+        }
     }
 }
