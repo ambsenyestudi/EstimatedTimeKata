@@ -5,15 +5,15 @@ namespace EstimatedTime.Domain
 {
     public class EstimatedDuration
     {
-        const string _ONEHOURSONEMINUTES = "1 hours and 1 minutes";
+        const string _SEPARATOR = " and ";
 
         public string GetEstimatedTime(string input)
         {
-            var splittedInput = input.Split(" and ");
+            var splittedInput = input.Split(_SEPARATOR);
 
-            var hours = splittedInput[0];
+            var hours = GetFormattedHours(splittedInput[0]);
 
-            var minutes = splittedInput[1];
+            var minutes = GetFormattedMinutes(splittedInput[1]);
 
             if(hours.StartsWith("0"))
             {
@@ -24,25 +24,30 @@ namespace EstimatedTime.Domain
             {
                 return hours;
             }
-
-            var formattedHours = GetFormattedTime(hours);
-            var formattedMinutes = GetFormattedTime(minutes);
-            
-            return $"{formattedHours} and {formattedMinutes}";
+                        
+            return $"{hours}{_SEPARATOR}{minutes}";
         }
+
+        private string GetFormattedMinutes(string input) =>
+            GetFormattedTime(input);
+
+        private string GetFormattedHours(string input) =>
+            GetFormattedTime(input);
 
         private string GetFormattedTime(string input)
         {
-            int.TryParse( input.Split(" ").First(), out var number);
-
-            if (number==1)
+            if(!IsSingular(input))
             {
-                return input.SkipLast(1).ToString();
-                
+                return input;
             }
-
-            return input;
-
+            return input.TrimEnd('s');
+        }
+        
+        private bool IsSingular(string input)
+        {
+            var numberRaw = input.Split(" ")[0];
+            var number = int.Parse(numberRaw);
+            return number == 1;
         }
     }
 }
