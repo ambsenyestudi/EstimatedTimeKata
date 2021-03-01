@@ -1,6 +1,4 @@
-﻿//return input.Skip(1).SkipWhile(x => !char.IsDigit(x)).ToString();
-using System.Linq;
-
+﻿
 namespace EstimatedTime.Domain
 {
     public class EstimatedDuration
