@@ -1,0 +1,2 @@
+# EstimatedTimeKata
+Estimated home Kata
