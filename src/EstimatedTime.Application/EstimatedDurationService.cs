@@ -8,7 +8,7 @@ namespace EstimatedTime.Application
         public string ProcessEstimatedDuration(string input)
         {
             var duration = new EstimatedDuration();
-            return duration.GetEstimatedTime();
+            return duration.GetEstimatedTime(input);
         }
     }
 }
