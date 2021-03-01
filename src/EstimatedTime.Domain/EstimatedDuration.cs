@@ -4,9 +4,9 @@ namespace EstimatedTime.Domain
 {
     public class EstimatedDuration
     {
-        public string GetEstimatedTime()
+        public string GetEstimatedTime(string input)
         {
-            return "1 hour and 1 minute";
+            return input;
         }
     }
 }
