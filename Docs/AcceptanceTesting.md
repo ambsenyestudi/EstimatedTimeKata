@@ -19,11 +19,8 @@ var myVerify = "I like to eat eggs for breakfast";
 Approvals.Verify(myVerify)
 ```
 
-Run the test and you will see two files auto generated:
-* YourTestNameHere.recieved.txt 
-* YourTestNameHere.approved.txt 
+Run the test, then a new file gets generated  **YourTestNameHere.recieved.txt** if you are happy with your content rename the file to **YourTestNameHere.approved.txt** so now you have your expected result.
 
-Your approved file should be empty. On the first run if you are happy with your content, copy de content of **YourTestNameHere.recieved.txt** 
-inside of **YourTestNameHere.approved.txt**, rerun your test, and now it passes.
-This two files exist so you can compare them side by side with a Diff tool and see what has changed.
+Every time that you run the test if there is a difference between the test outcome and the approved file, a new **YourTestNameHere.recieved.txt** will be generated for you so you can compare the differences among the two in a Diff tool.
+
 Happy approval testing.
