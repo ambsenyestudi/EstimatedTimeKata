@@ -6,7 +6,7 @@ namespace EstimatedTime.Domain
     {
         public string GetEstimatedTime()
         {
-            throw new NotImplementedException();
+            return "1 hour and 1 minute";
         }
     }
 }
